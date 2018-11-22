@@ -1,0 +1,2 @@
+# TutorApp-MOBAPDE
+The application is a code tutorial application that has code samples demonstrating the basics of either C, Java, or Python. The app would allow users to view code samples posted by other users. They may also add their own code samples. But in order to add code samples, users must first register to the system so that they can be acknowledged as well as be held accountable for the code samples they add.
