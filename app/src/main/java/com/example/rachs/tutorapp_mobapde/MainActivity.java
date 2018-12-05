@@ -1,8 +1,10 @@
 package com.example.rachs.tutorapp_mobapde;
 
+import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 import android.widget.TextView;
 
 import com.google.firebase.database.DatabaseReference;
@@ -27,7 +29,15 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    public void signInAsGuest(View v){
+        Intent intent = new Intent(getApplicationContext(), GuestClass.class);
 
+        MainActivity.this.startActivity(intent);
+    }
 
-
+    public void signInAsUser(View v){
+        // check if credentials match,
+        // if yes, proceed to next screen and put extras sa intent
+        // else, make a toast that shows incorrect credentials
+    }
 }
