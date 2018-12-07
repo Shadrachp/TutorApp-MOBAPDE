@@ -29,10 +29,16 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public void signInAsGuest(View v){
-        Intent intent = new Intent(getApplicationContext(), GuestClass.class);
+    public void triggerRegister(View v){
+        // Intent intent = new Intent(getApplicationContext(), Register.class);
 
-        MainActivity.this.startActivity(intent);
+        // MainActivity.this.startActivity(intent);
+    }
+
+    public void signInAsGuest(View v){
+        /*Intent intent = new Intent(getApplicationContext(), GuestClass.class);
+
+        MainActivity.this.startActivity(intent);*/
     }
 
     public void signInAsUser(View v){
