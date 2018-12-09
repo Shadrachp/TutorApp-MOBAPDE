@@ -55,11 +55,8 @@ public class MainActivity extends AppCompatActivity {
         userRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                userdb.clear();
 
-                for(DataSnapshot userSnapshot : dataSnapshot.getChildren()){
 
-                }
             }
 
             @Override
@@ -73,9 +70,6 @@ public class MainActivity extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 samplesDb.clear();
 
-                for(DataSnapshot sampleSnapshot : dataSnapshot.getChildren()){
-
-                }
             }
 
             @Override
