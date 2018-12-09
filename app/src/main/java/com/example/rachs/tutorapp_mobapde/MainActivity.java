@@ -25,20 +25,14 @@ public class MainActivity extends AppCompatActivity {
         tvLogo = findViewById(R.id.tvLogo);
         tvLogo.setTypeface(Typeface.createFromAsset(this.getAssets(), "fonts/Billabong.ttf"));
 
-        mStorageRef = FirebaseStorage.getInstance().getReference();
+//        mStorageRef = FirebaseStorage.getInstance().getReference();
 
     }
 
     public void triggerRegister(View v){
-        // Intent intent = new Intent(getApplicationContext(), Register.class);
+         Intent intent = new Intent(getApplicationContext(), RegisterClass.class);
 
-        // MainActivity.this.startActivity(intent);
-    }
-
-    public void signInAsGuest(View v){
-        /*Intent intent = new Intent(getApplicationContext(), GuestClass.class);
-
-        MainActivity.this.startActivity(intent);*/
+         MainActivity.this.startActivity(intent);
     }
 
     public void signInAsUser(View v){

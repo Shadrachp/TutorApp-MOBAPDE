@@ -6,21 +6,21 @@
     android:layout_height="match_parent">
 
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/g_recyclerArea"
+        android:id="@+id/u_recyclerArea"
         android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_height="484dp"
         android:layout_marginBottom="9dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="17dp"
+        android:layout_marginTop="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/g_searchText" />
+        app:layout_constraintTop_toBottomOf="@+id/u_searchText" />
 
     <EditText
-        android:id="@+id/g_searchText"
+        android:id="@+id/u_searchText"
         android:layout_width="0dp"
         android:layout_height="52dp"
         android:layout_marginEnd="8dp"
@@ -28,27 +28,39 @@
         android:layout_marginTop="6dp"
         android:background="@drawable/rounded_corner"
         android:ems="10"
-        android:hint="Search"
+        android:hint="@string/search"
         android:inputType="textPersonName"
         android:paddingLeft="16dip"
         android:textColor="#282727"
         android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/g_btnSearch"
+        app:layout_constraintEnd_toStartOf="@+id/u_btnSearch"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageButton
-        android:id="@+id/g_btnSearch"
-        android:layout_width="36dp"
+        android:id="@+id/u_btnSearch"
+        android:layout_width="38dp"
         android:layout_height="0dp"
-        android:layout_marginBottom="20dp"
+        android:layout_marginBottom="11dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="3dp"
         android:layout_marginTop="6dp"
         android:background="@drawable/rounded_corner"
-        app:layout_constraintBottom_toTopOf="@+id/g_recyclerArea"
+        app:layout_constraintBottom_toTopOf="@+id/u_recyclerArea"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/g_searchText"
+        app:layout_constraintStart_toEndOf="@+id/u_searchText"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/search_icon" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fabAdd"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:layout_marginEnd="8dp"
+        android:clickable="true"
+        app:backgroundTint="@color/common_google_signin_btn_text_dark_default"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/add_icon" />
 </android.support.constraint.ConstraintLayout>

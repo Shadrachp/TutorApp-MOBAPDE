@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/logo_icon"
+        android:layout_width="121dp"
+        android:layout_height="114dp"
+        android:layout_marginEnd="3dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/titleView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/ic_launcher_background" />
+
+    <TextView
+        android:id="@+id/titleView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="11dp"
+        android:layout_marginStart="5dp"
+        android:text="Title"
+        app:layout_constraintBottom_toTopOf="@+id/posterView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/logo_icon"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/lastEditedView"
+        android:layout_width="0dp"
+        android:layout_height="23dp"
+        android:layout_marginEnd="13dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="15dp"
+        android:text="Last modified: "
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/logo_icon"
+        app:layout_constraintTop_toBottomOf="@+id/posterView" />
+
+    <TextView
+        android:id="@+id/posterView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="12dp"
+        android:text="Posted by: "
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/logo_icon"
+        app:layout_constraintTop_toBottomOf="@+id/titleView" />
+
+    <TextView
+        android:id="@+id/codeTypeView"
+        android:layout_width="0dp"
+        android:layout_height="16dp"
+        android:layout_marginEnd="112dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="8dp"
+        android:text="Code Type: "
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/logo_icon"
+        app:layout_constraintTop_toBottomOf="@+id/lastEditedView" />
+</android.support.constraint.ConstraintLayout>
