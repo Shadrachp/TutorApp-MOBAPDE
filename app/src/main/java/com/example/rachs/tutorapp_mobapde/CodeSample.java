@@ -1,14 +1,17 @@
+package com.example.rachs.tutorapp_mobapde;
+
 public class CodeSample {
-    private String codeSample, type, title;
+    private String codeSample, type, title, id;
 
     public CodeSample() {
 
     }
 
-    public CodeSample(String codeSample, String type, String title) {
+    public CodeSample(String codeSample, String type, String title, String id) {
         this.codeSample = codeSample;
         this.type = type;
         this.title = title;
+        this.id = id;
     }
 
     public void setCodeSample(String codeSample) {
@@ -24,7 +27,6 @@ public class CodeSample {
     }
 
     public String getCodeSample() {
-
         return codeSample;
     }
 
@@ -34,5 +36,9 @@ public class CodeSample {
 
     public String getTitle() {
         return title;
+    }
+
+    public String getId() {
+        return id;
     }
 }
