@@ -47,8 +47,11 @@ public class FirebaseInterface {
     public void getSamplesData(DataSnapshot sampleSnapshot){
         codes.clear();
         for(DataSnapshot dataSnapshot : sampleSnapshot.getChildren()){
-            CodeSample code = dataSnapshot.getValue(CodeSample.class);
-            codes.add(code);
+            String key = dataSnapshot.getKey();
+            for(DataSnapshot dataSnapshot1 : sampleSnapshot.child(key).getChildren()){
+                CodeSample code = dataSnapshot.getValue(CodeSample.class);
+                codes.add(code);
+            }
         }
     }
 

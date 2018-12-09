@@ -2,11 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a6c6e7b5-d641-4c14-b2da-91f628f96fda" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/CodeSample.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/rachs/tutorapp_mobapde/CodeSample.java" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/FirebaseInterface.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/rachs/tutorapp_mobapde/FirebaseInterface.java" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/User.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/rachs/tutorapp_mobapde/User.java" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/rachs/tutorapp_mobapde/MainActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/rachs/tutorapp_mobapde/MainActivity.java" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/rachs/tutorapp_mobapde/FirebaseInterface.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/rachs/tutorapp_mobapde/FirebaseInterface.java" />
     </list>
     <ignored path="$PROJECT_DIR$/build/classes/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -33,8 +29,8 @@
       <file leaf-file-name="FirebaseInterface.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/rachs/tutorapp_mobapde/FirebaseInterface.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state relative-caret-position="1579">
+              <caret line="68" column="0" lean-forward="true" selection-start-line="68" selection-start-column="0" selection-end-line="68" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#438#439#0" expanded="true" />
@@ -2706,8 +2702,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/rachs/tutorapp_mobapde/FirebaseInterface.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state relative-caret-position="1579">
+          <caret line="68" column="0" lean-forward="true" selection-start-line="68" selection-start-column="0" selection-end-line="68" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#438#439#0" expanded="true" />
