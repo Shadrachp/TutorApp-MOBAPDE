@@ -22,7 +22,7 @@ public class FirebaseInterface {
         return codes;
     }
 
-    public void addNewUser(String name,DatabaseReference userRef){
+    public void addNewUser(String name, DatabaseReference userRef){
         String id = userRef.push().getKey();
         User user = new User(name, id);
         userRef.child(id).setValue(user);

@@ -6,8 +6,15 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -25,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
     private FirebaseDatabase database;
     private DatabaseReference userRef, codeRef;
     private FirebaseInterface fbInterface;
+    private FirebaseAuth mAuth;
 
     private ArrayList<User> users, userdb;
     private ArrayList<CodeSample> codeSamples, samplesDb;
@@ -43,6 +51,7 @@ public class MainActivity extends AppCompatActivity {
         users = new ArrayList<>();
         userdb = new ArrayList<>();
         samplesDb = new ArrayList<>();
+        mAuth = FirebaseAuth.getInstance();
 
         tvLogo = findViewById(R.id.tvLogo);
         tvLogo.setTypeface(Typeface.createFromAsset(this.getAssets(), "fonts/Billabong.ttf"));
@@ -52,10 +61,15 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
+
+        if (mAuth.getCurrentUser() != null){
+            finish();
+            startActivity(new Intent(this, UserClass.class));
+        }
+
         userRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-
 
             }
 
@@ -81,14 +95,42 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void triggerRegister(View v){
-         Intent intent = new Intent(getApplicationContext(), RegisterClass.class);
-
-         MainActivity.this.startActivity(intent);
+        finish();
+        Intent intent = new Intent(getApplicationContext(), RegisterClass.class);
+        startActivity(intent);
     }
 
     public void signInAsUser(View v){
-        // check if credentials match,
-        // if yes, proceed to next screen and put extras sa intent
-        // else, make a toast that shows incorrect credentials
+        EditText etUser = findViewById(R.id.etUser);
+        EditText etPass = findViewById(R.id.tvPassword);
+
+        String email = etUser.getText().toString().trim();
+        String pass = etUser.getText().toString().trim();
+
+        if (email.isEmpty()){
+            etUser.setError("Username is required!");
+            return;
+        }
+
+        if (pass.isEmpty()){
+            etPass.setError("Password is required!");
+            return;
+        }
+
+        mAuth.signInWithEmailAndPassword(email, pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+            @Override
+            public void onComplete(@NonNull Task<AuthResult> task) {
+                if (task.isSuccessful()){
+                    finish();
+                    Intent intent = new Intent(getApplicationContext(), UserClass.class);
+                    // clear open activities on top of stack
+                    // put Extras?
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    startActivity(intent);
+                } else{
+                    Toast.makeText(getApplicationContext(), task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
     }
 }
