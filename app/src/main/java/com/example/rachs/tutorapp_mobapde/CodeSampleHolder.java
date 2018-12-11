@@ -3,6 +3,7 @@ package com.example.rachs.tutorapp_mobapde;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
@@ -19,6 +20,12 @@ public class CodeSampleHolder extends RecyclerView.ViewHolder {
         codeTypeView = itemView.findViewById(R.id.codeTypeView);
 
         // add on click listener here
+        itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.d("MESSAGE", "ITEM CLICKED");
+            }
+        });
     }
 
     public void setTitle(String title){

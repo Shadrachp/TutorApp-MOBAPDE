@@ -49,10 +49,6 @@ public class CodeSample {
         this.title = title;
     }
 
-    public void setOwner(String owner){
-        this.owner = owner;
-    }
-
     public String getCodeSample() {
         return codeSample;
     }
@@ -69,7 +65,4 @@ public class CodeSample {
         return id;
     }
 
-    public String getOwner(){
-        return owner;
-    }
 }
