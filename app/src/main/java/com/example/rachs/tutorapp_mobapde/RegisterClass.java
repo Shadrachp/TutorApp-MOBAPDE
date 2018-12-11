@@ -117,7 +117,7 @@ public class RegisterClass extends AppCompatActivity{
         progressBar.setVisibility(View.VISIBLE);
 
         if(emailFormat && emailNotEmpty && passNotEmpty && passMinLength) {
-            String email = emailText.getText().toString().trim();
+            final String email = emailText.getText().toString().trim();
             String password = passwordText.getText().toString().trim();
 
             mAuth.createUserWithEmailAndPassword(email, password)
@@ -153,7 +153,7 @@ public class RegisterClass extends AppCompatActivity{
                                     @Override
                                     public void onComplete(@NonNull Task<AuthResult> task) {
                                         if (task.isSuccessful()) {
-                                            fbInterface.addNewUser(usernameText.getText().toString().trim(), userRef);
+                                            fbInterface.addNewUser(usernameText.getText().toString().trim(),email, userRef);
                                             finish();
                                             Intent intent = new Intent(getApplicationContext(), UserClass.class);
                                             // clear open activities on top of stack
