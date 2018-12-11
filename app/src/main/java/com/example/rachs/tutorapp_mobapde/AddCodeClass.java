@@ -56,7 +56,7 @@ public class AddCodeClass extends AppCompatActivity {
             String content = contentText.getText().toString();
             String type = typeText.getText().toString();
             String title = titleText.getText().toString();
-
+            
             fbInterface.addNewCodeSample(content, type, title, user.getEmail(), codeRef, user.getDisplayName());
             finish();
             startActivity(new Intent(this, UserClass.class));
