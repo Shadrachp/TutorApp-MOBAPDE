@@ -1,14 +1,15 @@
 package com.example.rachs.tutorapp_mobapde;
 
 public class CodeSample {
-    private String codeSample, type, title, id;
+    private String codeSample, owner, type, title, id;
 
     public CodeSample() {
 
     }
 
-    public CodeSample(String codeSample, String type, String title, String id) {
+    public CodeSample(String codeSample, String owner, String type, String title, String id) {
         this.codeSample = codeSample;
+        this.owner = owner;
         this.type = type;
         this.title = title;
         this.id = id;
@@ -26,6 +27,10 @@ public class CodeSample {
         this.title = title;
     }
 
+    public void setOwner(String owner){
+        this.owner = owner;
+    }
+
     public String getCodeSample() {
         return codeSample;
     }
@@ -40,5 +45,9 @@ public class CodeSample {
 
     public String getId() {
         return id;
+    }
+
+    public String getOwner(){
+        return owner;
     }
 }

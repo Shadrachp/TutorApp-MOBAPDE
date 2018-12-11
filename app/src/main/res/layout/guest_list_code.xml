@@ -46,6 +46,7 @@
         android:layout_marginStart="3dp"
         android:layout_marginTop="6dp"
         android:background="@drawable/rounded_corner"
+        android:onClick="search_guest"
         app:layout_constraintBottom_toTopOf="@+id/g_recyclerArea"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/g_searchText"

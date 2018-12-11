@@ -20,8 +20,9 @@
         android:id="@+id/contentView"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="10dp"
         android:text="Content"
+        android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -31,34 +32,21 @@
         android:id="@+id/typeView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="11dp"
+        android:layout_marginEnd="1dp"
         android:layout_marginTop="10dp"
         android:text="@string/code_type"
-        app:layout_constraintEnd_toStartOf="@+id/lastEditView"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/postView" />
+        app:layout_constraintTop_toBottomOf="@+id/ownView" />
 
     <TextView
-        android:id="@+id/postView"
+        android:id="@+id/ownView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="10dp"
         android:text="@string/postedby"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/codeTitle" />
 
-    <TextView
-        android:id="@+id/lastEditView"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
-        android:layout_marginStart="11dp"
-        android:layout_marginTop="6dp"
-        android:text="@string/last_modified"
-        app:layout_constraintBottom_toTopOf="@+id/contentView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/typeView"
-        app:layout_constraintTop_toBottomOf="@+id/postView"
-        app:layout_constraintVertical_bias="0.8" />
 </android.support.constraint.ConstraintLayout>

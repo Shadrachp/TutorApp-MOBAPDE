@@ -19,6 +19,8 @@
         <activity android:name=".GuestClass"/>
         <activity android:name=".RegisterClass"/>
         <activity android:name=".UserClass"/>
+        <activity android:name=".AddCodeClass"/>
+        <activity android:name=".ViewCodeClass"/>
     </application>
 
 </manifest>

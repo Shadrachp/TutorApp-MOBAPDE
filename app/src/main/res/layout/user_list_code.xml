@@ -40,22 +40,24 @@
     <ImageButton
         android:id="@+id/u_btnSearch"
         android:layout_width="38dp"
-        android:layout_height="0dp"
+        android:layout_height="51dp"
         android:layout_marginBottom="11dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="3dp"
         android:layout_marginTop="6dp"
         android:background="@drawable/rounded_corner"
+        android:onClick="search_user"
         app:layout_constraintBottom_toTopOf="@+id/u_recyclerArea"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/u_searchText"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/search_icon" />
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fabAdd"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_width="53dp"
+        android:layout_height="51dp"
         android:layout_marginBottom="16dp"
         android:layout_marginEnd="8dp"
         android:clickable="true"

@@ -18,22 +18,35 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.UserProfileChangeRequest;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
 
 public class RegisterClass extends AppCompatActivity{
 
-    private EditText nameText;
+    // UI components
     private EditText usernameText;
     private EditText passwordText;
     private EditText emailText;
     private ProgressBar progressBar;
+
+    // Firebase components
     private FirebaseAuth mAuth;
+    private FirebaseDatabase database;
+    private FirebaseInterface fbInterface;
+    private DatabaseReference userRef;
+
     private boolean passNotEmpty, passMinLength, emailNotEmpty, emailFormat;
+    private ArrayList<User> users;
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.register_screen);
 
-        nameText = findViewById(R.id.nameText);
         usernameText = findViewById(R.id.usernameText);
         passwordText = findViewById(R.id.passwordText);
         emailText = findViewById(R.id.emailText);
@@ -45,6 +58,11 @@ public class RegisterClass extends AppCompatActivity{
         emailFormat = false;
 
         mAuth = FirebaseAuth.getInstance();
+        database = FirebaseDatabase.getInstance();
+
+        fbInterface = new FirebaseInterface();
+        userRef = database.getReference("users");
+        users = new ArrayList<>();
     }
 
     @Override
@@ -60,11 +78,6 @@ public class RegisterClass extends AppCompatActivity{
 
     public void register(View v){
         // trigger database after all checks
-        if (nameText.getText().toString().trim().isEmpty()) {
-            nameText.setError("Full name is required!");
-            return;
-        }
-
         if (usernameText.getText().toString().trim().isEmpty()) {
             usernameText.setError("Username is required!");
             return;
@@ -103,7 +116,7 @@ public class RegisterClass extends AppCompatActivity{
 
         progressBar.setVisibility(View.VISIBLE);
 
-        if(emailFormat && emailNotEmpty && passNotEmpty && passMinLength){
+        if(emailFormat && emailNotEmpty && passNotEmpty && passMinLength) {
             String email = emailText.getText().toString().trim();
             String password = passwordText.getText().toString().trim();
 
@@ -120,7 +133,7 @@ public class RegisterClass extends AppCompatActivity{
 
                                 // get current user to update username
                                 FirebaseUser user = mAuth.getCurrentUser();
-                                if (user != null){
+                                if (user != null) {
                                     // update user profile
                                     UserProfileChangeRequest profile = new UserProfileChangeRequest.Builder()
                                             .setDisplayName(usernameText.getText().toString().trim())
@@ -134,13 +147,23 @@ public class RegisterClass extends AppCompatActivity{
                                         }
                                     });
                                 }
-                                // finish activity
-                                finish();
-                                // prepare new intent and start intent
-                                Intent intent = new Intent(getApplicationContext(), UserClass.class);
-                                // clear open activities on top of stack
-                                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                                startActivity(intent);
+
+                                mAuth.signInWithEmailAndPassword(emailText.getText().toString().trim(),
+                                                                 passwordText.getText().toString().trim()).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                                    @Override
+                                    public void onComplete(@NonNull Task<AuthResult> task) {
+                                        if (task.isSuccessful()) {
+                                            fbInterface.addNewUser(usernameText.getText().toString().trim(), userRef);
+                                            finish();
+                                            Intent intent = new Intent(getApplicationContext(), UserClass.class);
+                                            // clear open activities on top of stack
+                                            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                            startActivity(intent);
+                                        } else {
+                                            Toast.makeText(getApplicationContext(), task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                                        }
+                                    }
+                                });
                             } else {
                                 if (task.getException() instanceof FirebaseAuthUserCollisionException) {
                                     Toast toast = Toast.makeText(getApplicationContext(), "Email is already registered!", Toast.LENGTH_SHORT);

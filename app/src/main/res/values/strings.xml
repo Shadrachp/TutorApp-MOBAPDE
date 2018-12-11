@@ -11,4 +11,7 @@
     <string name="postedby">Posted By: </string>
     <string name="code_type">Code Type: </string>
     <string name="last_modified">Last modified: </string>
+    <string name="sample">Add Code Sample</string>
+    <string name="title">Title</string>
+    <string name="content">Content</string>
 </resources>

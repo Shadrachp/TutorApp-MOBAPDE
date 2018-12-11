@@ -5,6 +5,7 @@ import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -105,7 +106,7 @@ public class MainActivity extends AppCompatActivity {
         EditText etPass = findViewById(R.id.tvPassword);
 
         String email = etUser.getText().toString().trim();
-        String pass = etUser.getText().toString().trim();
+        String pass = etPass.getText().toString().trim();
 
         if (email.isEmpty()){
             etUser.setError("Username is required!");
@@ -124,7 +125,6 @@ public class MainActivity extends AppCompatActivity {
                     finish();
                     Intent intent = new Intent(getApplicationContext(), UserClass.class);
                     // clear open activities on top of stack
-                    // put Extras?
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(intent);
                 } else{

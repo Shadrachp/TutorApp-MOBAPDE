@@ -29,9 +29,9 @@ public class FirebaseInterface {
 
     }
 
-    public void addNewCodeSample(String code, String type, String title, String userId, DatabaseReference codeRef){
+    public void addNewCodeSample(String code, String owner,  String type, String title, String userId, DatabaseReference codeRef){
         String id = codeRef.push().getKey();
-        CodeSample cs = new CodeSample(code, type, title, userId);
+        CodeSample cs = new CodeSample(code, owner, type, title, userId);
 
         codeRef.child(cs.getId()).child(id).setValue(cs);
     }
