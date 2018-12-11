@@ -83,7 +83,7 @@ public class FirebaseInterface {
         codeRef.child(cs.getOwner()).setValue(cs);
     }
 
-    public void updaetCodeTitle(CodeSample cs, String title, DatabaseReference codeRef){
+    public void updateCodeTitle(CodeSample cs, String title, DatabaseReference codeRef){
         cs.setTitle(title);
         codeRef.child(cs.getOwner()).setValue(cs);
     }

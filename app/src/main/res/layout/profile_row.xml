@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <Button
+        android:id="@+id/btnEdit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:layout_marginEnd="5dp"
+        android:background="@drawable/rounded_corner"
+        android:text="Edit"
+        android:textColor="#282727"
+        app:layout_constraintBottom_toTopOf="@+id/btnDelete"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <Button
+        android:id="@+id/btnDelete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="5dp"
+        android:background="@drawable/rounded_corner"
+        android:text="Delete"
+        android:textColor="#282727"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/profile_title"
+        android:layout_width="0dp"
+        android:layout_height="39dp"
+        android:layout_marginBottom="13dp"
+        android:layout_marginStart="2dp"
+        android:text="@string/title"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/profile_type"
+        app:layout_constraintEnd_toStartOf="@+id/btnEdit"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/profile_type"
+        android:layout_width="0dp"
+        android:layout_height="47dp"
+        android:layout_marginStart="2dp"
+        android:layout_marginTop="13dp"
+        android:text="@string/code_type"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toStartOf="@+id/btnDelete"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/profile_title" />
+
+    <TextView
+        android:id="@+id/postID"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="60dp"
+        android:layout_marginStart="2dp"
+        android:text="TextView"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+</android.support.constraint.ConstraintLayout>

@@ -21,6 +21,8 @@
         <activity android:name=".UserClass"/>
         <activity android:name=".AddCodeClass"/>
         <activity android:name=".ViewCodeClass"/>
+        <activity android:name=".ProfileClass"/>
+        <activity android:name=".EditCodeClass"/>
     </application>
 
 </manifest>

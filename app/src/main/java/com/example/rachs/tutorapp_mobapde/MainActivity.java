@@ -96,7 +96,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void triggerRegister(View v){
-        finish();
         Intent intent = new Intent(getApplicationContext(), RegisterClass.class);
         startActivity(intent);
     }
