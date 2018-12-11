@@ -22,16 +22,16 @@ public class FirebaseInterface {
         return codes;
     }
 
-    public void addNewUser(String name, DatabaseReference userRef){
+    public void addNewUser(String name, String email, DatabaseReference userRef){
         String id = userRef.push().getKey();
-        User user = new User(name, id);
+        User user = new User(name, id, email);
         userRef.child(id).setValue(user);
 
     }
 
-    public void addNewCodeSample(String code, String owner,  String type, String title, String userId, DatabaseReference codeRef){
+    public void addNewCodeSample(String code, String type, String title, String userId, DatabaseReference codeRef, String username){
         String id = codeRef.push().getKey();
-        CodeSample cs = new CodeSample(code, owner, type, title, userId);
+        CodeSample cs = new CodeSample(code, type, title, id, username, userId);
 
         codeRef.child(cs.getId()).child(id).setValue(cs);
     }
@@ -63,8 +63,30 @@ public class FirebaseInterface {
         }
     }
 
+    public void updateUserName(User user, String name, DatabaseReference userRef){
+        user.setName(name);
+        userRef.child(user.getId()).setValue(user);
+    }
 
+    public void updateUserEmail(User user, String email, DatabaseReference userRef){
+        user.setEmail(email);
+        userRef.child(user.getId()).setValue(user);
+    }
 
+    public void updateCodeSample(CodeSample cs, String code, DatabaseReference codeRef){
+        cs.setCodeSample(code);
+        codeRef.child(cs.getOwner()).setValue(cs);
+    }
+
+    public void updateCodeType(CodeSample cs, String type, DatabaseReference codeRef){
+        cs.setCodeSample(type);
+        codeRef.child(cs.getOwner()).setValue(cs);
+    }
+
+    public void updaetCodeTitle(CodeSample cs, String title, DatabaseReference codeRef){
+        cs.setTitle(title);
+        codeRef.child(cs.getOwner()).setValue(cs);
+    }
 
 
 
