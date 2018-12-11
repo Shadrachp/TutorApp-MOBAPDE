@@ -26,8 +26,9 @@ public class CodeSampleAdapter extends RecyclerView.Adapter<CodeSampleHolder> {
 
     @Override
     public void onBindViewHolder(CodeSampleHolder holder, int position) {
+        holder.setId(codeSamples.get(position).getId());
         holder.setTitle(codeSamples.get(position).getTitle());
-        holder.setOwner(codeSamples.get(position).getOwner());
+        holder.setOwner(codeSamples.get(position).getUsername());
         holder.setType(codeSamples.get(position).getType());
     }
 
@@ -38,7 +39,15 @@ public class CodeSampleAdapter extends RecyclerView.Adapter<CodeSampleHolder> {
 
     // TODO: implement add
     public void addItem(CodeSample codeSample){
+        for (CodeSample sample : codeSamples) {
+            if (sample.getId().equals(codeSample.getId()))
+                return;
+        }
         codeSamples.add(codeSample);
         notifyItemInserted(codeSamples.size() - 1);
+    }
+
+    public void clearData(){
+        codeSamples.clear();
     }
 }

@@ -7,6 +7,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -85,8 +86,11 @@ public class UserClass extends AppCompatActivity {
 
                 fbInterface.getSamplesData(dataSnapshot);
                 codeSamples = fbInterface.getCodes();
-                for (CodeSample codeSample : codeSamples)
+                for (CodeSample codeSample : codeSamples) {
+                    Log.d("CODE SAMPLE", "" + codeSample.toString());
+                    Log.d("CODE SAMPLE TITLE", "" + codeSample.getTitle());
                     adapter.addItem(codeSample);
+                }
             }
 
             @Override
@@ -94,6 +98,12 @@ public class UserClass extends AppCompatActivity {
 
             }
         });
+    }
+
+    protected void onStop() {
+        super.onStop();
+
+        codeSamples.clear();
     }
 
     public void search_user(View v) {

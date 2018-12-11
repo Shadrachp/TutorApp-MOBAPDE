@@ -23,7 +23,12 @@ public class CodeSampleHolder extends RecyclerView.ViewHolder {
         itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.d("MESSAGE", "ITEM CLICKED");
+                Log.d("MESSAGE", "ITEM CLICKED" + idView.getText().toString());
+                // Prepare intent and put id
+                Context context = v.getContext();
+                Intent intent = new Intent(context, ViewCodeClass.class);
+                intent.putExtra("CODE_SAMPLE_ID", idView.getText().toString());
+                context.startActivity(intent);
             }
         });
     }
@@ -33,11 +38,11 @@ public class CodeSampleHolder extends RecyclerView.ViewHolder {
     }
 
     public void setOwner(String owner){
-        ownerView.setText(R.string.postedby + owner);
+        ownerView.setText("Owner: " + owner);
     }
 
     public void setType(String codeType){
-        codeTypeView.setText(R.string.code_type + codeType);
+        codeTypeView.setText("Code Type: " + codeType);
     }
 
     public void setId(String id){

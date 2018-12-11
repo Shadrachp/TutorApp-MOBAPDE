@@ -14,7 +14,6 @@ public class CodeSample {
         this.title = title;
         this.id = id;
         this.username = username;
-        this.owner = owner;
     }
 
     public String getOwner() {
