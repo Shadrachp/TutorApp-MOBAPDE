@@ -71,7 +71,8 @@ public class MainActivity extends AppCompatActivity {
         userRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-
+                fbInterface.getUserdata(dataSnapshot);
+                users = fbInterface.getUsers();
             }
 
             @Override
@@ -104,7 +105,7 @@ public class MainActivity extends AppCompatActivity {
         EditText etUser = findViewById(R.id.etUser);
         EditText etPass = findViewById(R.id.tvPassword);
 
-        String email = etUser.getText().toString().trim();
+        final String email = etUser.getText().toString().trim();
         String pass = etPass.getText().toString().trim();
 
         if (email.isEmpty()){
@@ -123,6 +124,9 @@ public class MainActivity extends AppCompatActivity {
                 if (task.isSuccessful()){
                     finish();
                     Intent intent = new Intent(getApplicationContext(), UserClass.class);
+                    for (User user : users)
+                        if (user.getEmail().equals(email))
+                            intent.putExtra("ID", user.getId());
                     // clear open activities on top of stack
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(intent);

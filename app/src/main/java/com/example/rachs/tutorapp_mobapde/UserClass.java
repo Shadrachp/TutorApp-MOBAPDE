@@ -36,9 +36,12 @@ public class UserClass extends AppCompatActivity {
     private FirebaseInterface fbInterface;
     private FirebaseAuth mAuth;
     private FirebaseDatabase database;
+    private DatabaseReference userRef;
     private DatabaseReference codeRef;
 
+    private ArrayList<User> users;
     private ArrayList<CodeSample> codeSamples;
+    private String userID;
 
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
@@ -52,13 +55,14 @@ public class UserClass extends AppCompatActivity {
         fab_Add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(getApplicationContext(), AddCodeClass.class));
+                startActivity(new Intent(getApplicationContext(), AddCodeClass.class).putExtra("USER_ID", userID));
             }
         });
 
         database = FirebaseDatabase.getInstance();
         mAuth = FirebaseAuth.getInstance();
         fbInterface = new FirebaseInterface();
+        userRef = database.getReference("users");
         codeRef = database.getReference("codesamples");
 
         // connect to FirebaseDatabase and load Code Samples
@@ -80,6 +84,23 @@ public class UserClass extends AppCompatActivity {
             startActivity(new Intent(this, MainActivity.class));
         }
 
+        userRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                fbInterface.getUserdata(dataSnapshot);
+                users = fbInterface.getUsers();
+                for (User user : users){
+                    if (user.getEmail().equals(mAuth.getCurrentUser().getEmail()))
+                        userID = user.getId();
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
         // load code samples
         codeRef.addValueEventListener(new ValueEventListener() {
             @Override
@@ -89,11 +110,8 @@ public class UserClass extends AppCompatActivity {
 
                 fbInterface.getSamplesData(dataSnapshot);
                 codeSamples = fbInterface.getCodes();
-                for (CodeSample codeSample : codeSamples) {
-                    Log.d("CODE SAMPLE", "" + codeSample.toString());
-                    Log.d("CODE SAMPLE TITLE", "" + codeSample.getTitle());
+                for (CodeSample codeSample : codeSamples)
                     adapter.addItem(codeSample);
-                }
             }
 
             @Override
@@ -113,10 +131,12 @@ public class UserClass extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch(item.getItemId()){
-            case R.id.user_codesamples: startActivity(new Intent(this, ProfileClass.class));
+            case R.id.user_codesamples: startActivity(new Intent(this, ProfileClass.class).putExtra("USER_ID", userID));
                                         return true;
-//            case R.id.user_logout:
-//                                   return true;
+            case R.id.user_logout:  FirebaseAuth.getInstance().signOut();
+                                    finish();
+                                    startActivity(new Intent(this, MainActivity.class));
+                                    return true;
 
             default: return super.onOptionsItemSelected(item);
         }

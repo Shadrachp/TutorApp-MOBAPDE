@@ -14,7 +14,6 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class AddCodeClass extends AppCompatActivity {
 
-    private TextView addView;
     private EditText titleText, typeText, contentText;
 
     private FirebaseDatabase database;
@@ -25,7 +24,6 @@ public class AddCodeClass extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.add_code_sample);
 
-        addView = findViewById(R.id.addView);
         titleText = findViewById(R.id.titleText);
         typeText = findViewById(R.id.typeText);
         contentText = findViewById(R.id.contentText);
@@ -57,7 +55,7 @@ public class AddCodeClass extends AppCompatActivity {
             String type = typeText.getText().toString();
             String title = titleText.getText().toString();
             
-            fbInterface.addNewCodeSample(content, type, title, user.getEmail(), codeRef, user.getDisplayName());
+            fbInterface.addNewCodeSample(content, type, title, getIntent().getStringExtra("USER_ID"), codeRef, user.getDisplayName());
             finish();
             startActivity(new Intent(this, UserClass.class));
         } else {

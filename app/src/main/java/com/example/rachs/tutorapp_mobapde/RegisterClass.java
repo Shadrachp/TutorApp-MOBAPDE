@@ -153,9 +153,10 @@ public class RegisterClass extends AppCompatActivity{
                                     @Override
                                     public void onComplete(@NonNull Task<AuthResult> task) {
                                         if (task.isSuccessful()) {
-                                            fbInterface.addNewUser(usernameText.getText().toString().trim(),email, userRef);
+                                            User user = fbInterface.addNewUser(usernameText.getText().toString().trim(), email, userRef);
                                             finish();
                                             Intent intent = new Intent(getApplicationContext(), UserClass.class);
+                                            intent.putExtra("USER_ID", user.getId());
                                             // clear open activities on top of stack
                                             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                                             startActivity(intent);

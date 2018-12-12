@@ -7,6 +7,8 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -37,18 +39,18 @@ public class ProfileClass extends AppCompatActivity {
 
         user_codelist = findViewById(R.id.user_codelist);
 
-        layoutManager = new LinearLayoutManager(this);
-        adapter = new ProfileCodeAdapter();
-
-        user_codelist.setLayoutManager(layoutManager);
-        user_codelist.setAdapter(adapter);
-
         mAuth = FirebaseAuth.getInstance();
         database = FirebaseDatabase.getInstance();
         codeRef = database.getReference("codesamples");
         fbInterface = new FirebaseInterface();
 
+        layoutManager = new LinearLayoutManager(this);
+        adapter = new ProfileCodeAdapter();
+
         codeSamples = new ArrayList<>();
+
+        user_codelist.setLayoutManager(layoutManager);
+        user_codelist.setAdapter(adapter);
     }
 
     @Override
@@ -66,10 +68,15 @@ public class ProfileClass extends AppCompatActivity {
                 if (!codeSamples.isEmpty())
                     codeSamples.clear();
 
-                fbInterface.getSelectedSamplesData(dataSnapshot, mAuth.getCurrentUser().getEmail());
+                String id = getIntent().getStringExtra("USER_ID");
+                Toast.makeText(ProfileClass.this, id, Toast.LENGTH_SHORT).show();
+                fbInterface.getSelectedSamplesData(dataSnapshot, id);
                 codeSamples = fbInterface.getCodes();
-                for (CodeSample codeSample : codeSamples)
+//                Toast.makeText(ProfileClass.this, codeSamples.size() + " Hi", Toast.LENGTH_SHORT).show();
+                for (CodeSample codeSample : codeSamples) {
+                    Toast.makeText(ProfileClass.this, codeSample.getId(), Toast.LENGTH_SHORT).show();
                     adapter.addItem(codeSample);
+                }
             }
 
             @Override

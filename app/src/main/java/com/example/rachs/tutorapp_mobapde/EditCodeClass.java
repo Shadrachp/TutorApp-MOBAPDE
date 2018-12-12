@@ -44,7 +44,7 @@ public class EditCodeClass extends AppCompatActivity {
         btnAdd.setText("Edit");
 
         Intent intent = getIntent();
-        id = intent.getStringExtra("ID");
+        id = intent.getStringExtra("CODE_SAMPLE_ID");
         sample = new ArrayList<>();
 
         database = FirebaseDatabase.getInstance();
