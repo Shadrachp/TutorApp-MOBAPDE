@@ -96,8 +96,9 @@ public class FirebaseInterface {
     }
 
 
-
-
+    public void deleteCode(String userId, String codeId, DatabaseReference codeRef){
+        codeRef.child(userId).child(codeId).removeValue();
+    }
 
 
 }
