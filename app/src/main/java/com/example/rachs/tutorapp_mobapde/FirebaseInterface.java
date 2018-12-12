@@ -82,17 +82,17 @@ public class FirebaseInterface {
 
     public void updateCodeSample(CodeSample cs, String code, DatabaseReference codeRef){
         cs.setCodeSample(code);
-        codeRef.child(cs.getOwner()).setValue(cs);
+        codeRef.child(cs.getOwner()).child(cs.getId()).setValue(cs);
     }
 
     public void updateCodeType(CodeSample cs, String type, DatabaseReference codeRef){
         cs.setCodeSample(type);
-        codeRef.child(cs.getOwner()).setValue(cs);
+        codeRef.child(cs.getOwner()).child(cs.getId()).setValue(cs);
     }
 
     public void updateCodeTitle(CodeSample cs, String title, DatabaseReference codeRef){
         cs.setTitle(title);
-        codeRef.child(cs.getOwner()).setValue(cs);
+        codeRef.child(cs.getOwner()).child(cs.getId()).setValue(cs);
     }
 
 
