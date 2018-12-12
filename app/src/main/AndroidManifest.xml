@@ -23,6 +23,7 @@
         <activity android:name=".ViewCodeClass"/>
         <activity android:name=".ProfileClass"/>
         <activity android:name=".EditCodeClass"/>
+        <activity android:name=".SearchClass"/>
     </application>
 
 </manifest>

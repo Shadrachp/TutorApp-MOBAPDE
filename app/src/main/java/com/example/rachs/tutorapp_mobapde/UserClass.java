@@ -157,11 +157,10 @@ public class UserClass extends AppCompatActivity {
 
     public void search_user(View v) {
         String searchText = u_searchText.getText().toString().trim();
-        for (CodeSample codeSample : codeSamples){
-            if (codeSample.getTitle().contains(searchText)){
-
-            }
-        }
+        Intent intent = new Intent(this, SearchClass.class);
+        intent.putExtra("USER_ID", userID);
+        intent.putExtra("SEARCH", searchText);
+        startActivity(intent);
     }
 
 }
