@@ -29,7 +29,7 @@ public class ProfileCodeAdapter extends RecyclerView.Adapter<ProfileCodeHolder> 
     public void onBindViewHolder(ProfileCodeHolder holder, int position) {
         holder.setTitle(samples.get(position).getTitle());
         holder.setType(samples.get(position).getType());
-        holder.setID(samples.get(position).getId());
+        holder.setID(samples.get(position).getOwner() + " " + samples.get(position).getId());
     }
 
     @Override

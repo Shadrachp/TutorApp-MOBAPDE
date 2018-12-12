@@ -27,7 +27,12 @@ public class CodeSampleHolder extends RecyclerView.ViewHolder {
                 // Prepare intent and put id
                 Context context = v.getContext();
                 Intent intent = new Intent(context, ViewCodeClass.class);
-                intent.putExtra("CODE_SAMPLE_ID", idView.getText().toString());
+                String id = idView.getText().toString();
+                String[] splitted = id.split(" ");
+                String userID = splitted[0];
+                String postID = splitted[1];
+                intent.putExtra("USER_ID", userID);
+                intent.putExtra("CODE_SAMPLE_ID", postID);
                 context.startActivity(intent);
             }
         });

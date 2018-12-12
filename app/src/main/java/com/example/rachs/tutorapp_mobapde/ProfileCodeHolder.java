@@ -26,7 +26,12 @@ public class ProfileCodeHolder extends RecyclerView.ViewHolder {
             public void onClick(View v) {
                 Context context = v.getContext();
                 Intent intent = new Intent(context, EditCodeClass.class);
-                intent.putExtra("CODE_SAMPLE_ID", postID.getText().toString());
+                String id = postID.getText().toString();
+                String[] splitted = id.split(" ");
+                String userID = splitted[0];
+                String postID = splitted[1];
+                intent.putExtra("USER_ID", userID);
+                intent.putExtra("CODE_SAMPLE_ID", postID);
                 context.startActivity(intent);
             }
         });

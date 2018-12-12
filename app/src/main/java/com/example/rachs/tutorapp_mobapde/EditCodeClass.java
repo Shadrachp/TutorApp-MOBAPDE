@@ -57,6 +57,8 @@ public class EditCodeClass extends AppCompatActivity {
                 fbInterface.updateCodeTitle(sample.get(0), titleText.getText().toString(), codeRef);
                 fbInterface.updateCodeType(sample.get(0), typeText.getText().toString(), codeRef);
                 fbInterface.updateCodeSample(sample.get(0), contentText.getText().toString(), codeRef);
+                finish();
+                startActivity(new Intent(EditCodeClass.this, ProfileClass.class).putExtra("USER_ID", getIntent().getStringExtra("USER_ID")));
             }
         });
     }
@@ -68,8 +70,14 @@ public class EditCodeClass extends AppCompatActivity {
         codeRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                fbInterface.getSelectedSamplesData(dataSnapshot, id);
+                Intent intent = getIntent();
+                String userID = intent.getStringExtra("USER_ID");
+                String postID = intent.getStringExtra("CODE_SAMPLE_ID");
+                fbInterface.getSpecificSampleData(userID, postID, dataSnapshot);
                 sample = fbInterface.getCodes();
+                titleText.setText(sample.get(0).getTitle());
+                typeText.setText(sample.get(0).getType());
+                contentText.setText(sample.get(0).getCodeSample());
             }
 
             @Override

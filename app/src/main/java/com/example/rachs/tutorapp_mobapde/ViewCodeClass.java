@@ -26,7 +26,6 @@ public class ViewCodeClass extends AppCompatActivity {
     private FirebaseInterface fbInterface;
     private DatabaseReference codeRef;
 
-    private String id;
     private ArrayList<CodeSample> codeSamples;
 
     public void onCreate(Bundle savedInstanceState) {
@@ -43,7 +42,6 @@ public class ViewCodeClass extends AppCompatActivity {
         codeRef = database.getReference("codesamples");
 
         Intent intent = getIntent();
-        id = intent.getStringExtra("CODE_SAMPLE_ID");
         Log.d("ID", "" + intent.getStringExtra("CODE_SAMPLE_ID"));
 
         codeSamples = new ArrayList<>();
@@ -55,7 +53,10 @@ public class ViewCodeClass extends AppCompatActivity {
         codeRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                fbInterface.getSelectedSamplesData(dataSnapshot, id);
+                Intent intent = getIntent();
+                String userID = intent.getStringExtra("USER_ID");
+                String postID = intent.getStringExtra("CODE_SAMPLE_ID");
+                fbInterface.getSpecificSampleData(userID, postID, dataSnapshot);
                 codeSamples = fbInterface.getCodes();
 
                 for (CodeSample codeSample : codeSamples){
