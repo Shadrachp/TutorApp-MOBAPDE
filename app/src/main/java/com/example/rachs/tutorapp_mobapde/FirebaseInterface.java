@@ -63,6 +63,19 @@ public class FirebaseInterface {
         }
     }
 
+    public void getSearchedSampleData(DataSnapshot sampleSnapshot, String searched){
+        codes.clear();
+        for(DataSnapshot dataSnapshot : sampleSnapshot.getChildren()){
+            String key = dataSnapshot.getKey();
+            for(DataSnapshot dataSnapshot1 : sampleSnapshot.child(key).getChildren()){
+                CodeSample code = dataSnapshot1.getValue(CodeSample.class);
+                if(code.getTitle().contains(searched)){
+                    codes.add(code);
+                }
+            }
+        }
+    }
+
     public void getSpecificSampleData(String userId, String codeId, DataSnapshot sampleSnapshot){
         codes.clear();
         DataSnapshot dataSnapshot = sampleSnapshot.child(userId).child(codeId);
