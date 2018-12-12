@@ -74,10 +74,8 @@ public class ProfileClass extends AppCompatActivity {
                 fbInterface.getSelectedSamplesData(dataSnapshot, id);
                 codeSamples = fbInterface.getCodes();
 
-                for (CodeSample codeSample : codeSamples) {
-                    Toast.makeText(ProfileClass.this, codeSample.getId(), Toast.LENGTH_SHORT).show();
+                for (CodeSample codeSample : codeSamples)
                     adapter.addItem(codeSample);
-                }
             }
 
             @Override

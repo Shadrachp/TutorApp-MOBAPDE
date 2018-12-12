@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -34,6 +35,8 @@ public class MainActivity extends AppCompatActivity {
     private DatabaseReference userRef, codeRef;
     private FirebaseInterface fbInterface;
     private FirebaseAuth mAuth;
+    private ImageView guestArrow;
+    private TextView tvGuest;
 
     private ArrayList<User> users, userdb;
     private ArrayList<CodeSample> codeSamples, samplesDb;
@@ -56,7 +59,24 @@ public class MainActivity extends AppCompatActivity {
 
         tvLogo = findViewById(R.id.tvLogo);
         tvLogo.setTypeface(Typeface.createFromAsset(this.getAssets(), "fonts/Billabong.ttf"));
+        tvGuest = findViewById(R.id.tvGuest);
+        guestArrow = findViewById(R.id.arrowGuest);
 
+        guestArrow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), GuestClass.class);
+                startActivity(intent);
+            }
+        });
+
+        tvGuest.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), GuestClass.class);
+                startActivity(intent);
+            }
+        });
     }
 
     @Override
@@ -80,20 +100,6 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
-
-        codeRef.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                samplesDb.clear();
-
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
-
     }
 
     public void triggerRegister(View v){
@@ -101,7 +107,7 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void signInAsUser(View v){
+    public void signInAsUser(View v) {
         EditText etUser = findViewById(R.id.etUser);
         EditText etPass = findViewById(R.id.tvPassword);
 
@@ -126,7 +132,7 @@ public class MainActivity extends AppCompatActivity {
                     Intent intent = new Intent(getApplicationContext(), UserClass.class);
                     for (User user : users)
                         if (user.getEmail().equals(email))
-                            intent.putExtra("ID", user.getId());
+                            intent.putExtra("USER_ID", user.getId());
                     // clear open activities on top of stack
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(intent);

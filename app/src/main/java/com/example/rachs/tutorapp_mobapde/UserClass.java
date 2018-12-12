@@ -51,6 +51,7 @@ public class UserClass extends AppCompatActivity {
         u_searchText = findViewById(R.id.u_searchText);
         u_btnSearch = findViewById(R.id.u_btnSearch);
         u_recyclerArea = findViewById(R.id.u_recyclerArea);
+        userID = getIntent().getStringExtra("USER_ID");
         fab_Add = findViewById(R.id.fabAdd);
         fab_Add.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -91,8 +92,10 @@ public class UserClass extends AppCompatActivity {
                 fbInterface.getUserdata(dataSnapshot);
                 users = fbInterface.getUsers();
                 for (User user : users){
-                    if (user.getEmail().equals(mAuth.getCurrentUser().getEmail()))
-                        userID = user.getId();
+                    if (user.getEmail().equals(mAuth.getCurrentUser().getEmail())) {
+                        if (userID != null)
+                            userID = user.getId();
+                    }
                 }
             }
 
@@ -132,6 +135,7 @@ public class UserClass extends AppCompatActivity {
     protected void onRestart() {
         super.onRestart();
 
+        u_searchText.setText("");
         adapter.notifyDataSetChanged();
     }
 
@@ -158,7 +162,6 @@ public class UserClass extends AppCompatActivity {
     public void search_user(View v) {
         String searchText = u_searchText.getText().toString().trim();
         Intent intent = new Intent(this, SearchClass.class);
-        intent.putExtra("USER_ID", userID);
         intent.putExtra("SEARCH", searchText);
         startActivity(intent);
     }

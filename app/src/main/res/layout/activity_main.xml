@@ -22,7 +22,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <android.support.constraint.ConstraintLayout
-        android:layout_width="wrap_content"
+        android:layout_width="382dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
@@ -38,9 +38,9 @@
             android:id="@+id/etUser"
             android:layout_width="265dp"
             android:layout_height="39dp"
-            android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="20dp"
+            android:layout_marginEnd="8dp"
             android:background="@drawable/rounded_corner"
             android:hint="@string/email"
             android:paddingLeft="16dip"
@@ -57,9 +57,9 @@
             android:id="@+id/tvPassword"
             android:layout_width="265dp"
             android:layout_height="39dp"
-            android:layout_marginEnd="77dp"
             android:layout_marginStart="77dp"
             android:layout_marginTop="16dp"
+            android:layout_marginEnd="77dp"
             android:background="@drawable/rounded_corner"
             android:ems="10"
             android:hint="@string/password"
@@ -77,10 +77,10 @@
             android:id="@+id/btnRegister"
             android:layout_width="265dp"
             android:layout_height="41dp"
-            android:layout_marginBottom="16dp"
-            android:layout_marginEnd="60dp"
             android:layout_marginStart="60dp"
             android:layout_marginTop="8dp"
+            android:layout_marginEnd="60dp"
+            android:layout_marginBottom="16dp"
             android:background="@drawable/form_button"
             android:onClick="triggerRegister"
             android:text="@string/register"
@@ -95,9 +95,9 @@
             android:id="@+id/btnSign"
             android:layout_width="265dp"
             android:layout_height="39dp"
-            android:layout_marginEnd="60dp"
             android:layout_marginStart="60dp"
             android:layout_marginTop="28dp"
+            android:layout_marginEnd="60dp"
             android:background="@drawable/form_button"
             android:onClick="signInAsUser"
             android:text="@string/signin"
@@ -106,6 +106,54 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvPassword" />
 
+    </android.support.constraint.ConstraintLayout>
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="372dp"
+        android:layout_height="36dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="4dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/arrowGuest"
+            android:layout_width="19dp"
+            android:layout_height="16dp"
+            android:layout_marginStart="341dp"
+            android:layout_marginTop="6dp"
+            android:layout_marginEnd="7dp"
+            android:layout_marginBottom="1dp"
+            android:cropToPadding="true"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.307"
+            app:srcCompat="@drawable/arrow"
+            />
+
+        <TextView
+            android:id="@+id/tvGuest"
+            android:layout_width="99dp"
+            android:layout_height="17dp"
+            android:layout_marginStart="220dp"
+            android:layout_marginTop="9dp"
+            android:layout_marginEnd="7dp"
+            android:layout_marginBottom="4dp"
+            android:text="GUEST SIGN IN"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/arrowGuest"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0" />
     </android.support.constraint.ConstraintLayout>
 
 </android.support.constraint.ConstraintLayout>

@@ -1,5 +1,6 @@
 package com.example.rachs.tutorapp_mobapde;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -40,8 +41,8 @@ public class GuestClass extends AppCompatActivity {
         g_btnSearch = findViewById(R.id.g_btnSearch);
         g_recyclerArea = findViewById(R.id.g_recyclerArea);
 
-        database = FirebaseDatabase.getInstance();
         fbInterface = new FirebaseInterface();
+        database = FirebaseDatabase.getInstance();
         codeRef = database.getReference("codesamples");
 
         layoutManager = new LinearLayoutManager(this);
@@ -55,6 +56,7 @@ public class GuestClass extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
+        adapter.clear();
 
         // load code samples
         codeRef.addValueEventListener(new ValueEventListener() {
@@ -76,7 +78,23 @@ public class GuestClass extends AppCompatActivity {
         });
     }
 
-    public void search_guest(View v){
+    protected void onRestart() {
+        super.onRestart();
 
+        g_searchText.setText("");
+        adapter.notifyDataSetChanged();
+    }
+
+    protected void onStop() {
+        super.onStop();
+
+        codeSamples.clear();
+    }
+
+    public void search_guest(View v){
+        String searchText = g_searchText.getText().toString().trim();
+        Intent intent = new Intent(this, SearchClass.class);
+        intent.putExtra("SEARCH", searchText);
+        startActivity(intent);
     }
 }
