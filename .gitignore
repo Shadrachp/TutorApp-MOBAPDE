@@ -1,10 +1,8 @@
-
 *.iml
 google-services.json
 local.properties 
 .idea\workspace.xml
 *.bin
 *.lock
-*.bin
-*.lock
-.idea/workspace.xml
+.idea/
+.gradle/
