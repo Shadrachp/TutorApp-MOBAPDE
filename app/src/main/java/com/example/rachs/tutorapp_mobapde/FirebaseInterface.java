@@ -33,7 +33,7 @@ public class FirebaseInterface {
         String id = codeRef.push().getKey();
         CodeSample cs = new CodeSample(code, type, title, id, username, userId);
 
-        codeRef.child(cs.getId()).child(id).setValue(cs);
+        codeRef.child(userId).child(id).setValue(cs);
     }
 
     public void getUserdata(DataSnapshot usersnapShot){
@@ -61,6 +61,13 @@ public class FirebaseInterface {
             CodeSample code = dataSnapshot.getValue(CodeSample.class);
             codes.add(code);
         }
+    }
+
+    public void getSpecificSampleData(String userId, String codeId, DataSnapshot sampleSnapshot){
+        codes.clear();
+        DataSnapshot dataSnapshot = sampleSnapshot.child(userId).child(codeId);
+        CodeSample code = dataSnapshot.getValue(CodeSample.class);
+        codes.add(code);
     }
 
     public void updateUserName(User user, String name, DatabaseReference userRef){
