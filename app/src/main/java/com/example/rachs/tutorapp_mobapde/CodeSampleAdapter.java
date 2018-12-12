@@ -46,4 +46,8 @@ public class CodeSampleAdapter extends RecyclerView.Adapter<CodeSampleHolder> {
         codeSamples.add(codeSample);
         notifyItemInserted(codeSamples.size() - 1);
     }
+
+    public void clear(){
+        codeSamples.clear();
+    }
 }

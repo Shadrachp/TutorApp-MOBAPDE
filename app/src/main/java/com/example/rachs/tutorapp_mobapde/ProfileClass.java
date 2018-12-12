@@ -1,5 +1,7 @@
 package com.example.rachs.tutorapp_mobapde;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -69,10 +71,9 @@ public class ProfileClass extends AppCompatActivity {
                     codeSamples.clear();
 
                 String id = getIntent().getStringExtra("USER_ID");
-                Toast.makeText(ProfileClass.this, id, Toast.LENGTH_SHORT).show();
                 fbInterface.getSelectedSamplesData(dataSnapshot, id);
                 codeSamples = fbInterface.getCodes();
-//                Toast.makeText(ProfileClass.this, codeSamples.size() + " Hi", Toast.LENGTH_SHORT).show();
+
                 for (CodeSample codeSample : codeSamples) {
                     Toast.makeText(ProfileClass.this, codeSample.getId(), Toast.LENGTH_SHORT).show();
                     adapter.addItem(codeSample);

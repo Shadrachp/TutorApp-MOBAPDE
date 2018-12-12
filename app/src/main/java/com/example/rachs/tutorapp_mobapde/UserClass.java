@@ -77,6 +77,7 @@ public class UserClass extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
+        adapter.clear();
 
         // current user is not logged in, return to MainActivity
         if (mAuth.getCurrentUser() == null){
@@ -126,6 +127,12 @@ public class UserClass extends AppCompatActivity {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.user_menu, menu);
         return true;
+    }
+
+    protected void onRestart() {
+        super.onRestart();
+
+        adapter.notifyDataSetChanged();
     }
 
     @Override

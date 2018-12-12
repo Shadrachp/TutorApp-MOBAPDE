@@ -14,4 +14,8 @@
     <string name="sample">Add Code Sample</string>
     <string name="title">Title</string>
     <string name="content">Content</string>
+    <string name="delete_title">Delete?</string>
+    <string name="delete_body">Are you sure you want to delete?</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
 </resources>
