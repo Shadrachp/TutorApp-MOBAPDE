@@ -21,11 +21,11 @@
 
     <EditText
         android:id="@+id/g_searchText"
-        android:layout_width="0dp"
+        android:layout_width="300dp"
         android:layout_height="52dp"
-        android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="15dp"
+        android:layout_marginEnd="8dp"
         android:background="@drawable/rounded_corner"
         android:ems="10"
         android:hint="Search"
@@ -39,12 +39,12 @@
 
     <ImageButton
         android:id="@+id/g_btnSearch"
-        android:layout_width="36dp"
+        android:layout_width="55dp"
         android:layout_height="0dp"
-        android:layout_marginBottom="20dp"
-        android:layout_marginEnd="8dp"
         android:layout_marginStart="3dp"
         android:layout_marginTop="15dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="20dp"
         android:background="@drawable/rounded_corner"
         android:onClick="search_guest"
         app:layout_constraintBottom_toTopOf="@+id/g_recyclerArea"
